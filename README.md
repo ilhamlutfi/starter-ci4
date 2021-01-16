@@ -20,10 +20,10 @@ and any database settings.
 import the database starter.sql to your web database server and run the application with local development server 'php spark serve'
 
 # Features
-CRUD Query Builder with Modal Bootstrap 
-CRUD Object Model
-Export to PDF with TCPDF
-Export to XLSX with Phpspreadsheet
-Login system with Myth/Auth
-Clean code
+CRUD Query Builder with Modal Bootstrap,
+CRUD Object Model,
+Export to PDF with TCPDF,
+Export to XLSX with Phpspreadsheet,
+Login system with Myth/Auth,
+Clean code,
 Protection from (SQL injection, CSRF and XSS)
