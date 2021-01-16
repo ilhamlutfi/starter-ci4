@@ -17,7 +17,7 @@ The user guide corresponding to this version of the framework can be found
 ## Setup
 Copy `env` to `.env` and tailor for your app, specifically the baseURL
 and any database settings.
-import the database starter.sql to your web database server and run the application with local development server 'php spark serve'
+import the database starter.sql to your web database server and run the application with local development server 'php spark serve', Username : user Email : user@gmail.com Password : starter12345
 
 # Features
 CRUD Query Builder with Modal Bootstrap,
