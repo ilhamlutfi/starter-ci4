@@ -15,9 +15,16 @@ namespace App\Controllers;
  */
 
 use CodeIgniter\Controller;
+use CodeIgniter\HTTP\IncomingRequest;
 
 class BaseController extends Controller
 {
+	/**
+	 * GetPost, GetVar dll
+	 *
+	 * @var IncomingRequest;
+	 */
+	protected $request;
 
 	/**
 	 * An array of helpers to be loaded automatically upon
@@ -26,7 +33,7 @@ class BaseController extends Controller
 	 *
 	 * @var array
 	 */
-	protected $helpers = ['auth'];
+	protected $helpers = ['auth', 'url', 'form'];
 
 	/**
 	 * Constructor.

@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jan 16, 2021 at 12:29 PM
--- Server version: 10.3.25-MariaDB-0ubuntu0.20.04.1
+-- Generation Time: May 01, 2021 at 04:24 PM
+-- Server version: 8.0.23-0ubuntu0.20.04.1
 -- PHP Version: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `auth_activation_attempts` (
-  `id` int(11) UNSIGNED NOT NULL,
+  `id` int UNSIGNED NOT NULL,
   `ip_address` varchar(255) NOT NULL,
   `user_agent` varchar(255) NOT NULL,
   `token` varchar(255) DEFAULT NULL,
@@ -43,7 +43,7 @@ CREATE TABLE `auth_activation_attempts` (
 --
 
 CREATE TABLE `auth_groups` (
-  `id` int(11) UNSIGNED NOT NULL,
+  `id` int UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -55,8 +55,8 @@ CREATE TABLE `auth_groups` (
 --
 
 CREATE TABLE `auth_groups_permissions` (
-  `group_id` int(11) UNSIGNED NOT NULL DEFAULT 0,
-  `permission_id` int(11) UNSIGNED NOT NULL DEFAULT 0
+  `group_id` int UNSIGNED NOT NULL DEFAULT '0',
+  `permission_id` int UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -66,8 +66,8 @@ CREATE TABLE `auth_groups_permissions` (
 --
 
 CREATE TABLE `auth_groups_users` (
-  `group_id` int(11) UNSIGNED NOT NULL DEFAULT 0,
-  `user_id` int(11) UNSIGNED NOT NULL DEFAULT 0
+  `group_id` int UNSIGNED NOT NULL DEFAULT '0',
+  `user_id` int UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -77,10 +77,10 @@ CREATE TABLE `auth_groups_users` (
 --
 
 CREATE TABLE `auth_logins` (
-  `id` int(11) UNSIGNED NOT NULL,
+  `id` int UNSIGNED NOT NULL,
   `ip_address` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
-  `user_id` int(11) UNSIGNED DEFAULT NULL,
+  `user_id` int UNSIGNED DEFAULT NULL,
   `date` datetime NOT NULL,
   `success` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -93,7 +93,11 @@ INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `succ
 (1, '127.0.0.1', 'user@gmail.com', 1, '2021-01-15 23:12:36', 1),
 (2, '127.0.0.1', 'user@gmail.com', 1, '2021-01-15 23:13:38', 1),
 (3, '127.0.0.1', 'ilhamlutfi153@gmail.com', NULL, '2021-01-15 23:27:38', 0),
-(4, '127.0.0.1', 'user@gmail.com', 1, '2021-01-15 23:27:46', 1);
+(4, '127.0.0.1', 'user@gmail.com', 1, '2021-01-15 23:27:46', 1),
+(5, '127.0.0.1', 'user@gmail', NULL, '2021-04-30 21:50:25', 0),
+(6, '127.0.0.1', 'user@gmail', NULL, '2021-04-30 21:50:39', 0),
+(7, '127.0.0.1', 'user@gmail.com', 1, '2021-04-30 21:51:16', 1),
+(8, '127.0.0.1', 'user@gmail.com', 1, '2021-04-30 21:51:59', 1);
 
 -- --------------------------------------------------------
 
@@ -102,7 +106,7 @@ INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `succ
 --
 
 CREATE TABLE `auth_permissions` (
-  `id` int(11) UNSIGNED NOT NULL,
+  `id` int UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -114,7 +118,7 @@ CREATE TABLE `auth_permissions` (
 --
 
 CREATE TABLE `auth_reset_attempts` (
-  `id` int(11) UNSIGNED NOT NULL,
+  `id` int UNSIGNED NOT NULL,
   `email` varchar(255) NOT NULL,
   `ip_address` varchar(255) NOT NULL,
   `user_agent` varchar(255) NOT NULL,
@@ -129,10 +133,10 @@ CREATE TABLE `auth_reset_attempts` (
 --
 
 CREATE TABLE `auth_tokens` (
-  `id` int(11) UNSIGNED NOT NULL,
+  `id` int UNSIGNED NOT NULL,
   `selector` varchar(255) NOT NULL,
   `hashedValidator` varchar(255) NOT NULL,
-  `user_id` int(11) UNSIGNED NOT NULL,
+  `user_id` int UNSIGNED NOT NULL,
   `expires` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -143,8 +147,8 @@ CREATE TABLE `auth_tokens` (
 --
 
 CREATE TABLE `auth_users_permissions` (
-  `user_id` int(11) UNSIGNED NOT NULL DEFAULT 0,
-  `permission_id` int(11) UNSIGNED NOT NULL DEFAULT 0
+  `user_id` int UNSIGNED NOT NULL DEFAULT '0',
+  `permission_id` int UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -154,23 +158,23 @@ CREATE TABLE `auth_users_permissions` (
 --
 
 CREATE TABLE `employees` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `name` varchar(100) NOT NULL,
   `department` varchar(100) NOT NULL,
   `position` varchar(100) NOT NULL,
   `age` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `employees`
 --
 
 INSERT INTO `employees` (`id`, `name`, `department`, `position`, `age`) VALUES
-(1, 'Jessicas', 'Public relations', 'Staf', '23'),
 (2, 'John andreas', 'Finance', 'accountant', '22'),
 (3, 'Nick lean', 'Information Technology', 'IT Support', '25'),
 (4, 'Hansen alberte', 'Finance', 'Staf', '22'),
-(5, 'Alex lancer', 'Information Technology', 'Programmer', '26');
+(5, 'Alex lancer', 'Information Technology', 'Programmer', '26'),
+(9, 'ilham', 'Information Technology', 'Programmer', '21');
 
 -- --------------------------------------------------------
 
@@ -179,13 +183,13 @@ INSERT INTO `employees` (`id`, `name`, `department`, `position`, `age`) VALUES
 --
 
 CREATE TABLE `migrations` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+  `id` bigint UNSIGNED NOT NULL,
   `version` varchar(255) NOT NULL,
   `class` text NOT NULL,
   `group` varchar(255) NOT NULL,
   `namespace` varchar(255) NOT NULL,
-  `time` int(11) NOT NULL,
-  `batch` int(11) UNSIGNED NOT NULL
+  `time` int NOT NULL,
+  `batch` int UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -202,12 +206,12 @@ INSERT INTO `migrations` (`id`, `version`, `class`, `group`, `namespace`, `time`
 --
 
 CREATE TABLE `peoples` (
-  `id` int(11) NOT NULL,
-  `name` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
-  `address` text COLLATE utf8_unicode_ci NOT NULL,
-  `email` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `id` int NOT NULL,
+  `name` varchar(150) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `address` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `birthdate` date NOT NULL,
-  `added` timestamp NOT NULL DEFAULT current_timestamp()
+  `added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -1221,18 +1225,43 @@ INSERT INTO `peoples` (`id`, `name`, `address`, `email`, `birthdate`, `added`) V
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `products`
+--
+
+CREATE TABLE `products` (
+  `id` int NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `description` text NOT NULL,
+  `price` varchar(100) NOT NULL,
+  `date` date NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `name`, `description`, `price`, `date`, `created_at`, `updated_at`) VALUES
+(2, 'Pen', 'This is my pen', '10000', '2021-05-01', '2021-04-30 23:59:39', '2021-04-30 23:59:39'),
+(3, 'Chair', 'Wood Chair ', '50000', '2021-05-13', '2021-05-01 00:00:46', '2021-05-01 00:00:46'),
+(5, 'Handphone', 'MyHandphone', '60000', '2021-05-01', '2021-05-01 01:47:14', '2021-05-01 01:47:14');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `students`
 --
 
 CREATE TABLE `students` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `name` varchar(128) NOT NULL,
   `gender` varchar(10) NOT NULL,
   `address` text NOT NULL,
   `photo` varchar(128) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `students`
@@ -1249,7 +1278,7 @@ INSERT INTO `students` (`id`, `name`, `gender`, `address`, `photo`, `created_at`
 --
 
 CREATE TABLE `users` (
-  `id` int(11) UNSIGNED NOT NULL,
+  `id` int UNSIGNED NOT NULL,
   `email` varchar(255) NOT NULL,
   `username` varchar(30) DEFAULT NULL,
   `password_hash` varchar(255) NOT NULL,
@@ -1259,8 +1288,8 @@ CREATE TABLE `users` (
   `activate_hash` varchar(255) DEFAULT NULL,
   `status` varchar(255) DEFAULT NULL,
   `status_message` varchar(255) DEFAULT NULL,
-  `active` tinyint(1) NOT NULL DEFAULT 0,
-  `force_pass_reset` tinyint(1) NOT NULL DEFAULT 0,
+  `active` tinyint(1) NOT NULL DEFAULT '0',
+  `force_pass_reset` tinyint(1) NOT NULL DEFAULT '0',
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL
@@ -1358,6 +1387,12 @@ ALTER TABLE `peoples`
   ADD UNIQUE KEY `email` (`email`);
 
 --
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `students`
 --
 ALTER TABLE `students`
@@ -1379,67 +1414,73 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `auth_activation_attempts`
 --
 ALTER TABLE `auth_activation_attempts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `auth_groups`
 --
 ALTER TABLE `auth_groups`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `auth_logins`
 --
 ALTER TABLE `auth_logins`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `auth_permissions`
 --
 ALTER TABLE `auth_permissions`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `auth_reset_attempts`
 --
 ALTER TABLE `auth_reset_attempts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `auth_tokens`
 --
 ALTER TABLE `auth_tokens`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `peoples`
 --
 ALTER TABLE `peoples`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1001;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1001;
+
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables

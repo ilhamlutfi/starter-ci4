@@ -17,6 +17,10 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-server"></i></div>
                         Object Model
                     </a>
+                    <a class="nav-link" href="<?= base_url('ajax-jquery'); ?>">
+                        <div class="sb-nav-link-icon"><i class="fas fa-spinner"></i></div>
+                        Ajax jQuery
+                    </a>
                     <div class="sb-sidenav-menu-heading">Report</div>
                     <a class="nav-link" href="<?= base_url('export-pdf'); ?>">
                         <div class="sb-nav-link-icon"><i class="fas fa-file-pdf"></i></div>
