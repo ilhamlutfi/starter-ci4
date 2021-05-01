@@ -22,8 +22,10 @@ import the database starter.sql to your web database server and run the applicat
 # Features
 CRUD Query Builder with Modal Bootstrap,
 CRUD Object Model,
+CRUD Ajax jQuery,
 Export to PDF with TCPDF,
 Export to XLSX with Phpspreadsheet,
 Login system with Myth/Auth,
+SweetAlert2,
 Clean code,
 Protection from (SQL injection, CSRF and XSS)
